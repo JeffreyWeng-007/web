@@ -1,0 +1,12 @@
+[
+    {
+      "basePath": "./src/pageOne/",
+      "filename": "pageOne",
+      "chunk": ["chunk"]
+    },
+    {
+      "basePath": "./src/pageTwo/",
+      "filename": "pageTwo",
+      "chunk": ["chunk"]
+    }
+]
