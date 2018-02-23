@@ -27,7 +27,7 @@
 4. 根据终端提示，打开网页即可。（免费版每次运行，域名会变)
 
 ### 说明
-- simpleServer.js是建议server
+- simpleServer.js是建议server的Demo
 
 - supervisor：用来监听代码更改，相当于热更"dev": "supervisor ./bin/www"
 
