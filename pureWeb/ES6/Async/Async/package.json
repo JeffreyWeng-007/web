@@ -1,0 +1,19 @@
+{
+  "name": "ES6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "NodeJSAsync.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "jquery": "^3.3.1",
+    "jsdom": "^11.6.2",
+    "jsdom-no-contextify": "^3.1.0",
+    "path": "^0.12.7"
+  }
+}
