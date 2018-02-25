@@ -27,7 +27,7 @@
 不用担心有人把主动触发与监听混在一起了.
   
 ##ES6 Promise  
-* PART5 ES6标准的Promise，以后就用这种了
+* PART6 ES6标准的Promise，以后就用这种了
 * PART6及以下均为应用
     * 此处没有用then的第二个参数，即reject触发的操作。我们推荐用catch来获取错误
     * 注意到（A）处，我们使用后，发现后面的then仍然会被触发，打印"PART 6 参数传递: undefined"
