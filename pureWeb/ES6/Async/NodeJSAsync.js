@@ -15,7 +15,7 @@
 
   /**PART 2**/
 
-  /*忽略这代码，纯粹是引入jquery*/
+  /*忽略这代码，纯粹是引入jquery，node引入jquery*/
   var $ = require('jquery')(require('jsdom-no-contextify').jsdom().parentWindow);
   /*忽略这代码，纯粹是引入jquery*/
 
