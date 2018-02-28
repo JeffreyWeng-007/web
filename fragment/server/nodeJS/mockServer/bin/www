@@ -1,0 +1,153 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('backend:server');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '8888');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+
+/* SOCKET */
+var sio = require('../module/tcp')
+var tcp = sio.socket(server);
+// tcp.on('message', function (msg) {
+//   console.log('#server: 收到信息： ' + msg)
+//   tcp.send({'messages' : 'sv'+msg})
+// })
+// tcp.on('disconnect', function () {
+//     console.log('#server: 客户端断开连接')
+// })
+
+
+
+// var sio = require('socket.io')
+// var socket = sio.listen(server)
+// socket.on('connection', function (socket) {
+//   console.log('#server: 连接上socket')
+//   socket.send('你好')
+//   socket.on('message', function (msg) {
+//     console.log('#server: 收到信息： ' + msg)
+//     socket.send({'messages' : 'sv'+msg})
+//   })
+//   socket.on('disconnect', function () {
+//     console.log('#server: 客户端断开连接')
+//   })
+// })
+
+/** UDP **/
+// var udp = dgram.createSocket('udp4')
+// udp.bind('3306',function () {
+//   console.log('#server-$UDP: PORT:3306 has bind')
+// })
+// udp.on('message',function (msg, rinfo) {
+//   console.log('#server-$UDP: ' + msg)
+//   console.log('#server-$UDP: info: ' + rinfo.port)
+//   var buf = new Buffer({'messages' : '#server-$UDP:发送：收到信息为：' + msg})
+//   udp.send(buf,0,buf.length,rinfo.port,rinfo.address)
+// })
+
+/** UDP Broadcast 广播无效呢**/
+// var udpBrc = dgram.createSocket('udp4')
+//
+// udpBrc.bind('330694', '192.168.0.17',function () {
+//   console.log('#server-$Bc: PORT:330694 has bind')
+//   udpBrc.setBroadcast(true)
+//   // var buf = new Buffer('#server-$Bc: 广播')
+//   // udpBrc.send(buf, 0, buf.length, 41235, '192.168.0.255')
+// })
+// udpBrc.on('message',function (msg, rinfo) {
+//   console.log('#server-$Bc: ' + msg +'port: ' + rinfo.port)
+//   var buf = new Buffer('#server-$Bc:发送：收到信息为：' + msg)
+//   udpBrc.send(buf,0,buf.length,rinfo.port,rinfo.address)
+// })
+// setInterval(function () {
+//   console.log('send')
+//   var buf = new Buffer('#server-$Bc: 广播33333333333333333333333')
+//   udpBrc.send(buf, 0, buf.length, 41235, '192.168.0.255')
+// },5000)
+
+
+
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
