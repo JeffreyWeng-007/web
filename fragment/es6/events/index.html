@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../utils/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <label class="col-xs-8 col-sm-9" id="account_sig"></label>
+    <input type="text" class="input-text" value="" placeholder="请输入您的姓名" id="account_name" name="">
+    <select name="cmbProvince" id="account_sex" class="select">
+        <option value="男">男</option>
+        <option value="女">女</option>
+    </select>
+
+    <div class="mt-10 skin-minimal" style="width: 100%" id="account_industry">
+        <div class="radio-box">
+            <input type="radio" id="radio-1" name="demo-radio1" value="1">
+            <label for="radio-1">学会</label>
+        </div>
+        <div class="radio-box">
+            <input type="radio" id="radio-2" name="demo-radio1" value="2">
+            <label for="radio-2">医院</label>
+        </div>
+        <div class="radio-box">
+            <input type="radio" id="radio-3" name="demo-radio1" value="3">
+            <label for="radio-3">会务公司</label>
+        </div>
+        <div class="radio-box">
+            <input type="radio" id="radio-4" name="demo-radio1" value="4">
+            <label for="radio-4">企业</label>
+        </div>
+        <div class="radio-box">
+            <input type="radio" id="radio-5" name="demo-radio1" checked value="5">
+            <label for="radio-5">个人</label>
+        </div>
+    </div>
+
+
+    <select name="cmbProvince" id="cmbProvince" class="select">
+        省份
+    </select>
+
+    <table id="my_meeting" class="table table-title">
+        <tbody id="tbody"><tr class="text-c tr-225">
+            <td style="display:none">23</td>
+            <td class="table-td-msg text-l">
+                <div class="meeting-t-1">
+                    <div class="msgleft"><img src="http://mog.work2pix.top/medical/static/file/unified/img/2018-02-03/4bb3da66ba99af11b5642821036fa048.png" style="width:13.4375rem;height:10.625rem">
+                    </div>
+                    <div class="msgright">
+                        <div class="msgtitle">xxxxx</div>
+                        <div>时间:<span>2018-03-02</span></div>
+                        <div>地点:<span>北京市辖区2222</span></div>
+                        <div>学分类型:<span>无</span></div>
+                        <div>学科分类:<span class="btnData">心内科</span></div>
+                    </div>
+                </div>
+            </td>
+            <td class="td-text">已结束</td>
+            <td class="table-td-edit text-l">
+                <div><span name="发布" style="color: gray" value="1">发布</span><span name="开启报到" style="color: gray" value="1">开启报到</span></div>
+                <div><span name="开启报名" style="color: gray" value="1">开启报名</span><span name="detail">管理</span></div>
+                <div><span class="tderror" name="del" style="color: #f02411" value="0">删除</span></div>
+            </td>
+        </tr></tbody>
+    </table>
+
+    <div id="logout"></div>
+</body>
+
+<script src="../../../utils/jquery.icheck.min.js"></script>
+<script src="jsaddress.js" defer async></script>
+<script src="domEvents.js" defer async></script>
+
+</html>

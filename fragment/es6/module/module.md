@@ -57,4 +57,20 @@
  CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
  CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
  
+ ##RetainCycle
+ `
+    模块循环引用
+    (a->b) --> (b->a)
+    (a->b) --> (b->c) --> (c->a)
+ `
+ - PART RC CommonJS:
+    * require时会执行模块
+    * a在遇到require（b）时，代码就停了。在b.js之中，a.js没有执行完毕，只执行了第一行，exports.done = false。
+    * main.js执行到第二行时，不会再次执行b.js，而是输出缓存的b.js的执行结果，即它的第四行。
+    
+ - ES6:   
+    * ES6 不需要担心循环引用
+    * import时，不会去执行模块，而是只生成一个引用
+    * ES6模块不会缓存运行结果，而是动态地去被加载的模块取值
+ 
  

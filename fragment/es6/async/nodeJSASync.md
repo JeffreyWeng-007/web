@@ -147,7 +147,7 @@
         **async 函数就是将 Generator 函数的星号（*）替换成 async，将 yield 替换成 await**
     `
     - PART 16
-  
+       async样例
 ##总结
     能看到这里，也是蛮溜了
   

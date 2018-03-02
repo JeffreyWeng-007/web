@@ -1,0 +1,14 @@
+{
+  "name": "finite",
+  "version": "1.0.0",
+  "description": "`    　　* 状态总数（state）是有限的。    　　* 任一时刻，只处在一种状态之中。    　　* 某种条件下，会从一种状态转变（transition）到另一种状态。    `",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "javascript-state-machine": "^3.0.1"
+  }
+}

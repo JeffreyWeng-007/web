@@ -321,6 +321,7 @@
 // });
 
 // /******async函数******/
+//   /**PART 15**/
 // var asyncFs = require('fs')
 // var asyncReadFile = (fileName) => {
 //   return new Promise(function (resolve, reject) {
