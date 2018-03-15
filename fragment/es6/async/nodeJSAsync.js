@@ -8,9 +8,9 @@
 
   /**PART 1**/
   /*认识回调顺序*/
-  setTimeout(console.log, 0, 'a')
-  console.log('b')
-  console.log('c')
+  // setTimeout(console.log, 0, 'a')
+  // console.log('b')
+  // console.log('c')
   // 答案是b c a
 
 //   /**PART 2**/
@@ -85,7 +85,7 @@
 //       const task = function () {
 //         var error = true;
 //         if (!error) {
-//           resolve() }
+//           resolve({data: 1}) }
 //         else {
 //           reject() }
 //       }
@@ -94,10 +94,14 @@
 //     return promise;
 //   }
 //   const w = wait();
-//   w.then( () => {
-//     console.log("PART 5 ES6 Promise Success")
+//   w.then( (data) => {
+//     console.log("PART 5 ES6 Promise Success " + data)
 //   },() => {
 //     console.log("PART 5 ES6 Promise Error")
+//   }).then( (data) => {
+//     console.log("PART 5 ES6 Promise Success then2 " + data)
+//   },() => {
+//     console.log("PART 5 ES6 Promise Error then2")
 //   })
 
 // /**PART 6**/
@@ -187,6 +191,7 @@
 //     console.log('PART 9 Demo ' + result.bio);
 //   }
 //   var cort = cort()
+//   console.log('111');
 //   var ctResult = cort.next() /*B*/
 //   console.log('PART 9 Demo 0 返回的是generator: ' +JSON.stringify(ctResult))
 //
@@ -200,7 +205,7 @@
 //   }).catch(() => {
 //
 //   })
-//
+//   console.log('222');
 
 // /******Thunk******/
 // /**PART 10**/
@@ -269,10 +274,12 @@
 // var pmsfs = require('fs')
 // var coReadFile = function (fileName) {
 //   return new Promise(function (resolve, reject) {
-//      pmsfs.readFile(fileName, function (error, data) {
-//        if (error) reject(error)
-//        resolve(data)
-//      })
+//     setTimeout(function () {
+//       pmsfs.readFile(fileName, function (error, data) {
+//         if (error) reject(error)
+//         resolve(data)
+//       })
+//     },2000)
 //   })
 // }
 //
@@ -285,12 +292,21 @@
 //
 // //手动撸码样例
 // var pmsgen = pmsGen()
-// var pmsgen1 = pmsgen.next()
+//   console.log('111')
+//
+//   var pmsgen1 = pmsgen.next()
+// console.log('222 :' + pmsgen1.value)
 // pmsgen1.value.then(function (data) {
+//   console.log('333 ：' + data)
+//
 //   pmsgen.next(data).value.then(function (data) {
+//     console.log('444 :' + data)
+//
 //     pmsgen.next(data)
 //   })
 // })
+//   console.log('555')
+
 //
 // //co函数撸码
 // var pmsco = require('co')
@@ -342,7 +358,7 @@
 //   }
 // }
 // asyncGen().then( (data)=> {
-//   console.log('PART 16 执行完毕')
+//   console.log('PART 16 执行完毕 ' + data)
 // })
 
 

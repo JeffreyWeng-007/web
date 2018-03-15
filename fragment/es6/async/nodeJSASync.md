@@ -85,7 +85,13 @@
 ```
 
 * 新异步编程
-  - 一：协程 coroutine 缺点-流程管理却不方便，不知道何时调用next
+  - 一：协程 coroutine 缺点-流程管理却不方便，不知道何时调用next.
+  
+       **疑问：主线程是否会被.next()卡住?**
+       `
+         查看part 14可以发现，222处返回的是promise，所以不会卡住主线程
+       `
+       
       ```
         第一步，协程A开始执行。
         第二步，协程A执行到一半，进入暂停，执行权转移到协程B。
@@ -100,7 +106,8 @@
       yield命令：
             执行到这里，把执行权交给其它协程；暂停，等到执行权返回，再从暂停的地方继续往后执行
       next：
-            value:移动内部指针（即执行异步任务的第一段），指向**_第一个遇到的 yield 语句_**，即 x + 2，注意此时y未赋值，第二个next才会赋值
+            value:移动内部指针（即执行异步任务的第一段），指向**_第一个遇到的 yield 语句_**，即 x + 2，注意此时y未赋值，第二个next才会赋值.next(data)将值赋值给yield之后的语句。
+                  如： var result = yield fetch(url); 执行next（data），result等于data
             done: 表示此Generator函数是否执行完毕
       ```
       - B：因为fetch返回的是promise对象，所以要用then。第一个next（）执行了fetch(url)所以返回的result.value就是promise对象

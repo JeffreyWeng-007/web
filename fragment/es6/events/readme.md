@@ -12,6 +12,9 @@
     * 需要单独为error添加接收，否则出错时会直接crash； _emitter.on('error', function(){});_ 
   - PART 2: -- DOMEvents
     * 浏览器中的事件
+    * click冒泡
+    * 原生ajax
+    * input时时监听
     
     
 

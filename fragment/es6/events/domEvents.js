@@ -40,7 +40,7 @@
 // })()
 
 
-
+//原生Ajax
 var golobalURL = "http://mog.work2pix.top/medical/";
 var cid = 16;
 var Ajax = {
@@ -109,3 +109,18 @@ Ajax.post(golobalURL + "user/official_web/sharelink/get?token=&openid=oVP4Xs0SnL
       console.log("欢迎页授权错误")
     }
   });
+
+
+//监听input变化
+$('#mPhone_clear').click(function () {
+  $('#mPhone').val('').change()
+})
+
+$("#mPhone").on('input change', function() {
+  console.log('a ' + this.value)
+  if (/^1[3|4|5|7|8]\d{9}$/.test(this.value)) {
+    $('#phone_warn').hide();
+  } else {
+    $('#phone_warn').show();
+  }
+})
