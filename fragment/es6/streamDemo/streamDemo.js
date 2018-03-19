@@ -154,3 +154,45 @@ var Readable = require('stream').Readable
  * 中级篇
  *
  */
+
+//push使用同步模式，数据会添加到缓存
+// const dataSource = ['a', 'b', 'c']
+// const readable = Readable()
+// const async = true
+// readable._read = function () {
+//   if (async) {
+//     process.nextTick(() => {
+//       if (dataSource.length) {
+//         this.push(dataSource.shift())
+//       } else {
+//         this.push(null)
+//       }
+//     })
+//   } else {
+//     if (dataSource.length) {
+//       this.push(dataSource.shift())
+//     } else {
+//       this.push(null)
+//     }
+//   }
+// }
+//
+// //暂停模式
+// readable.pause()
+// readable.on('data', data => process.stdout.write('\ndata: ' + data))
+// var data = readable.read()
+//
+// if (async) {
+//   readable.on('readable', function () {
+//     while(null !== readable.read());
+//   })
+// } else {
+//   while (data !== null) {
+//     process.stdout.write('\nread: ' + data)
+//     data = readable.read()
+//   }
+// }
+
+//流动模式
+
+

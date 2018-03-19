@@ -18,10 +18,11 @@
           
      write(data)  data只能是String或Buffer类型
      _write(data)调用时传进来的data都是Buffer类型    
-    `
+    
     
     ／**使用objectMode选项，输入什么就是什么类型，不会转成Buffer
     const readable = Readable({ objectMode: true })
+    `
 
    - Readable Streams
        `
@@ -55,6 +56,18 @@
    - Transform
         duplex 中的可读流数据（0，1）与可写流中的（a，b）是隔离开的。
         可通过Transform将可写端写入的数据经变换后**自动添加**到可读端
+        
+
+### 进阶篇
+   
+   - 消耗方调用read促使流输出数据，流通过_read使底层调用push方法将数据传给流
+   - 如果流在流动模式下（state.flowing为true）输出数据，数据会自发通过data事件输出，不需要反复调用read（n）
+   - 如果调用push方法时缓存为空，则当前数据即为下一个需要的数据。
+   - 执行read后，调用_read，如果从缓存中取到数据，就以data事件输出。       
+   
+   - 如果_read异步调用push时发现缓存为空，则意味着当前数据是下一个需要的数据，且不会被read方法输出，应当在push方法中立即以data事件输出。
+          
+        
 
 参考： https://www.cnblogs.com/dolphinX/p/6285240.html  NodeJS Stream 二：什么是 Stream
       https://zhuanlan.zhihu.com/p/24541167  NodeJS Stream   

@@ -31,10 +31,14 @@
     （4）V8引擎再将结果返回给用户。
  
 - 两个有意思的方法
-    * process.nextTick 当前"执行栈"尾部调用；也就是所有的"任务队列"前，触发此回调（插队的意思）。
-    * setImmediate 在当前"任务队列"的尾部添加事件，也就是在下一次Event Loop时执行。与下面类似。
-    * setTimeout(fn,0)的含义是，指定某个任务在主线程最早可得的空闲时间执行，也就是说，尽可能早得执行。它在"任务队列"的尾部添加一个事件，因此要等到同步任务和"任务队列"现有的事件都处理完，才会得到执行。
+    * process.nextTick 每个阶段中间调用
+    * setImmediate 
+    * setTimeout(fn,0)
     * 多个process.nextTick语句总是在当前"执行栈"一次执行完，多个setImmediate可能则需要多次loop才能执行完。
+   
+- 同步任务总是比异步任务更早执行
+- 追加在本轮循环的异步任务 process.nextTick、Promise 快
+  追加在次轮循环的异步任务 setTimeout、setInterval、setImmediate 慢
    
 ###jquery异步解决方案
 见PART2
@@ -161,3 +165,6 @@
   参考：
   http://new-play.tudou.com/v/614934580.html?   《what the hack is event loop》老外的关于EventLoop视频
   http://www.ruanyifeng.com/blog/2014/10/event-loop.html 阮一峰的EventLoop详解
+  http://taobaofed.org/blog/2015/10/29/deep-into-node-1/ 初识单线程的 Node.js
+  http://latentflip.com/loupe/ 运行试验
+  https://github.com/nodejs/node/blob/v6.x/doc/topics/event-loop-timers-and-nexttick.md 官方
