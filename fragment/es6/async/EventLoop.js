@@ -51,12 +51,12 @@
  **/
 
 // 问题点，callback中，immediate不是立即执行。1234
-setTimeout(function () {
-  setImmediate(() => console.log(4));
-  setTimeout(() => console.log(3),0);
-  process.nextTick(() => console.log(2));
-},500)
-process.nextTick(() => console.log(1));
+// setTimeout(function () {
+//   setImmediate(() => console.log(4));
+//   setTimeout(() => console.log(3),0);
+//   process.nextTick(() => console.log(2));
+// },500)
+// process.nextTick(() => console.log(1));
 
 // var fs = require('fs')
 // fs.readFile('./data.json',function () {
